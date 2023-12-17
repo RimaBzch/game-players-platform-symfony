@@ -1,0 +1,28 @@
+{%extends"base.html.twig"%}
+{% block title%}
+Player
+{% endblock%}
+
+{% block titre%}
+<h1 class="text-center">Player: {{ joueur.getNom()}}</h1>
+<br>{% endblock%}
+{% block body %}
+<h2>
+    Name: 
+    {{ joueur.getNom()}}</h2>
+	<h2>
+		Email :
+		{{ joueur.getEmail()}}</h2>
+	<h2>
+		Born at:
+		{{ joueur.getBornAt()|date('Y-m-d') }}
+    <h2>
+        Score:
+		{{ joueur.getScore() }}</h2>
+    <br>
+        {% if joueur.Image is not null %}
+        <img src="{{joueur.Image.getUrl}}" height="100">
+        {% endif %}
+
+
+{% endblock %}

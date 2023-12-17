@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Home!{% endblock %}
+
+{% block body %}
+<h2>List Players || <small><a href=" {{path('Ajouter')}}">Ajouter </a></small><h2/>
+<table class="table table-hover table-striped" border="1">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nom  </th>
+            <th>email</th>
+            <th>Born At</th>
+            <th>score</th>
+             <th>image</th>
+              <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+{% for j in joueurs %}
+<tr>
+    <td>{{j.id}}</td>
+    <td>{{j.nom |upper }}</td>
+    <td>{{j.email }}</td>
+        <td>{{j.getBornAt() | date('d/m/yy')}}</td>
+    <td>{{j.score }}</td>
+
+    <td>   {% if j.getImage() is not null %}    <img src="{{ publicPath ~ j.getImage }}"  height="100">  {% endif %}</td>
+<td>
+    
+    <a class="btn btn-primary" href="#">voir</a>
+    <a class="btn btn-success" href="">Modifier</a>
+    <a class="btn btn-danger" href=""
+onclick="return confirm('Are you sure to delete!{{ j.id}}')">Supprimer</a>    
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}

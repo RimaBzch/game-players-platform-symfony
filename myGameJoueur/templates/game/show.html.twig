@@ -1,0 +1,41 @@
+{%extends"base.html.twig"%}
+{% block title%}
+{{parent()}}
+{% endblock%}
+{% block titre%}
+
+{{game.getTitre()}}{% endblock%}
+{% block body %}
+<h2>
+    Game: 
+    {{ game.getTitre()}}</h2>
+	<h2>
+		Type :
+		{{ game.getType()}}</h2>
+	<h2>
+		Players:
+		{{ game.getNbrJoueur() }}</h2>
+    <h2>
+        Developer:
+		{{ game.getEditeur() }}</h2>
+    <br>
+        {% if game.Image is not null %}
+        <img src="{{ game.Image.getUrl() }}" height="100">
+                {% endif %}
+    <br><br>    
+    <h2 > Players </h2><br>
+    
+     ****************************** <br>  
+        {% for j in joueur %}
+        <ul class="nav nav-pills nav-stacked">
+            <li><h3>Name: {{ j.nom}}</h3></li>
+            <li><h3>Email: {{ j.email}}</h3></li>
+            <li><h3>Score: {{ j.score}}</h3></li>
+            <li><img src="{{j.Image.getUrl}}" height="100"></li>
+            <br><br>
+            <li>******************************</li>
+        </ul>
+        {% endfor %}
+    
+
+{% endblock %}
